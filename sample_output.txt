@@ -1,0 +1,92 @@
+
+######################################################################
+# s1_verify_cauchy_riemann.py
+######################################################################
+================================================================
+Complex potential  f(z) = U (z + a^2/z)
+================================================================
+phi(x, y) = U*x*(a**2 + x**2 + y**2)/(x**2 + y**2)
+psi(x, y) = U*y*(-a**2 + x**2 + y**2)/(x**2 + y**2)
+
+Cauchy-Riemann equations
+  phi_x - psi_y = 0
+  phi_y + psi_x = 0
+
+Harmonicity
+  Laplacian(phi) = 0
+  Laplacian(psi) = 0
+
+Orthogonality  grad(phi) . grad(psi) = 0
+
+Polar form  psi(r, theta) = U*(-a + r)*(a + r)*sin(theta)/r
+  psi on r = a           = 0
+
+Complex velocity  f'(z) = -U*a**2/z**2 + U
+Stagnation points (f'(z) = 0): [-a, a]
+Far field  lim_{z->oo} f'(z) = U
+
+RESULT: all checks passed
+
+######################################################################
+# s2_streamlines.py
+######################################################################
+saved figures/fig1_streamlines.png
+saved figures/fig2_speed_field.png
+max speed in field = 1.9937 m/s (theory: 2U = 2.0000)
+
+######################################################################
+# s3_surface_pressure.py
+######################################################################
+max |q_num - q_exact|   = 2.00e-12
+max |Cp_num - Cp_exact| = 8.00e-12
+
+ theta(deg)   speed q/U     Cp
+       0      0.0000     1.0000
+      30      1.0000     0.0000
+      45      1.4142    -1.0000
+      60      1.7321    -2.0000
+      90      2.0000    -3.0000
+     120      1.7321    -2.0000
+     150      1.0000     0.0000
+     180      0.0000     1.0000
+
+saved figures/fig3_surface_pressure.png
+
+######################################################################
+# s4_forces.py
+######################################################################
+Convergence of the lift integral (Gamma = 4 m^2/s)
+exact rho*U*Gamma = 4.900000 N/m
+     n        left        midpoint     trapezoid
+     4     4.900000     4.900000     4.900000
+     8     4.900000     4.900000     4.900000
+    16     4.900000     4.900000     4.900000
+    64     4.900000     4.900000     4.900000
+   256     4.900000     4.900000     4.900000
+
+Forces for several circulations (n = 2000, trapezoid rule)
+ Gamma (m^2/s)   Drag (N/m)     Lift (N/m)    rho*U*Gamma (N/m)
+     0.0000      -1.25e-16      -0.000000        0.000000
+     2.0000      -2.58e-17       2.450000        2.450000
+     4.0000      -1.32e-16       4.900000        4.900000
+     8.0000      -1.99e-17       9.800000        9.800000
+    12.5664      -2.51e-17      15.393804       15.393804
+
+######################################################################
+# s5_magnus_effect.py
+######################################################################
+Gamma =   0.000: stagnation points = +1.000+0.000i, -1.000+0.000i
+Gamma =   6.283: stagnation points = +0.866-0.500i, -0.866-0.500i
+Gamma =  12.566: stagnation points = +0.000-1.000i
+Gamma =  18.850: stagnation points = +0.000-2.618i
+saved figures/fig4_magnus_effect.png
+
+######################################################################
+# s6_joukowski_airfoil.py
+######################################################################
+circle radius R = 1.0830, centre mu = (-0.08+0.08j)
+Kutta circulation Gamma = 2.8843 m^2/s
+airfoil chord = 4.0222 m, lift coefficient C_L = 1.4342
+saved figures/fig5_joukowski_airfoil.png
+
+Done. All figures are in the 'figures' folder.
